@@ -1,65 +1,176 @@
+"use client";
+
+import React, { useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+import { IoLogoHtml5 } from "react-icons/io";
+import { SiJavascript, SiTailwindcss } from "react-icons/si";
+import { DiCss3 } from "react-icons/di";
+import { IoLogoGithub, IoLogoReact } from "react-icons/io5";
 
 export default function Home() {
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <main className="bg-black text-white overflow-hidden">
+      {/* HERO SECTION */}
+      <section className="relative w-full h-[550px] bg-slate-900 flex justify-center items-center">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+          src="https://res.cloudinary.com/dlzjjxtsd/image/upload/v1746021876/ales-nesetril-Im7lZjxeLhg-unsplash_vneln2.jpg"
+          alt="Developer Workspace"
+          fill
+          className="object-cover opacity-40"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+
+        <motion.div
+          className="absolute text-center p-6"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-linear-to-r from-blue-500 to-purple-600">
+            Highbee
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-xl mt-4 opacity-90">Front-End Developer</p>
+          <p className="text-xl mt-2 opacity-80">
+            Transforming Ideas Into Code
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <p className="text-xl mt-2 opacity-80">
+            Bringing Designs to Life with Code
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            className="mt-6 px-8 py-3 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-lg shadow-lg transition-all duration-300"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <a href="/Projects">Discover My Work</a>
+          </motion.button>
+        </motion.div>
+      </section>
+
+      {/* ABOUT / INTRO SECTION */}
+      <section className="container mx-auto py-16 px-6" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-8 text-amber-400">
+          About Me
+        </h2>
+        <p className="max-w-3xl mx-auto text-center text-lg leading-relaxed opacity-90">
+          I’m a passionate Front-End Developer who loves crafting seamless, interactive, and visually engaging web experiences. My focus is on transforming creative ideas into functional designs using cutting-edge technologies like React, Tailwind, and Next.js. Whether it’s a startup project or a full-scale product, I aim to build interfaces that users love.
+        </p>
+      </section>
+
+      {/* PROJECTS PREVIEW SECTION */}
+      <section className="py-12" data-aos="fade-up">
+        <h2 className="text-3xl text-center mb-8 font-bold text-amber-400">
+          Featured Projects
+        </h2>
+
+        <div className="flex flex-wrap justify-center gap-6 px-4">
+          {[
+            {
+              href: "https://superdata-lime.vercel.app/",
+              src: "https://res.cloudinary.com/dlzjjxtsd/image/upload/v1747071945/superdata2_afaa9i.png",
+              alt: "Superdata",
+            },
+            {
+              href: "https://ibrahim-tech.vercel.app/",
+              src: "https://res.cloudinary.com/dlzjjxtsd/image/upload/v1747071885/tatechub_dz83yd.png",
+              alt: "Tatechhub",
+            },
+            {
+              href: "https://superjara-qi3w.vercel.app/",
+              src: "https://res.cloudinary.com/dlzjjxtsd/image/upload/v1747071917/superjara_lmttxv.png",
+              alt: "Superjara",
+            },
+          ].map((project, index) => (
+            <motion.a
+              key={index}
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              className="w-full md:w-[30%] rounded-lg overflow-hidden shadow-lg hover:shadow-amber-400/40 transition-all duration-300"
+            >
+              <Image
+                src={project.src}
+                alt={project.alt}
+                width={700}
+                height={500}
+                className="object-cover w-full h-[250px]"
+              />
+            </motion.a>
+          ))}
         </div>
-      </main>
-    </div>
+
+        <motion.div className="flex justify-center">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            className="mt-8 px-8 py-3 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-lg shadow-lg transition-all duration-300"
+          >
+            <a href="/Projects">See More Projects</a>
+          </motion.button>
+        </motion.div>
+      </section>
+
+      {/* SKILLS SECTION */}
+      <section className="py-16 bg-slate-800" data-aos="fade-up">
+        <h2 className="text-4xl text-center mb-8 text-amber-400 font-bold">
+          My Skills
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-6 md:px-16">
+          {[
+            { icon: <IoLogoReact />, name: "React" },
+            { icon: <SiTailwindcss />, name: "Tailwind CSS" },
+            { icon: <IoLogoGithub />, name: "GitHub" },
+            { icon: <IoLogoHtml5 />, name: "HTML5" },
+            { icon: <SiJavascript />, name: "JavaScript" },
+            { icon: <DiCss3 />, name: "CSS3" },
+          ].map((skill, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.05 }}
+              className="bg-slate-700 rounded-xl flex flex-col items-center justify-center py-8 text-white shadow-md"
+            >
+              <div className="text-[4rem] mb-4 text-amber-400">
+                {skill.icon}
+              </div>
+              <span className="text-2xl font-semibold">{skill.name}</span>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA / FOOTER IMAGE SECTION */}
+      <section
+        className="relative w-full h-[400px] mt-10"
+        data-aos="fade-up"
+      >
+        <Image
+          src="https://res.cloudinary.com/dlzjjxtsd/image/upload/v1746354536/gaming-rgb-keyboard-dark-background_77190-8079_jagat3.jpg"
+          alt="Keyboard"
+          fill
+          className="object-cover opacity-40"
+        />
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-4xl font-bold text-amber-400 mb-4"
+          >
+            Let’s Build Something Amazing
+          </motion.h2>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            className="px-8 py-3 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-lg shadow-lg transition-all duration-300"
+          >
+            <a href="/Contact">Contact Me</a>
+          </motion.button>
+        </div>
+      </section>
+    </main>
   );
 }
