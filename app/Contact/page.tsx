@@ -92,7 +92,7 @@ const Contact = () => {
             value={formData.message}
             onChange={handleChange}
             placeholder="Enter Message"
-            className="w-full h-[120px] p-3 rounded-lg bg-transparent border border-gray-400 focus:border-purple-500 focus:outline-none resize-none"
+            className="w-full h-[120px] p-3 rounded-lg bg-transparent border border-gray-400 focus:border-amber-500 focus:outline-none resize-none"
             required
           ></textarea>
 
@@ -103,7 +103,7 @@ const Contact = () => {
               value={formData.name}
               onChange={handleChange}
               placeholder="Enter your Name"
-              className="w-full p-3 rounded-lg bg-transparent border border-gray-400 focus:border-purple-500 focus:outline-none"
+              className="w-full p-3 rounded-lg bg-transparent border border-gray-400 focus:border-amber-500 focus:outline-none"
               required
             />
             <input
@@ -112,7 +112,7 @@ const Contact = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your Email"
-              className="w-full p-3 rounded-lg bg-transparent border border-gray-400 focus:border-purple-500 focus:outline-none"
+              className="w-full p-3 rounded-lg bg-transparent border border-gray-400 focus:border-amber-500 focus:outline-none"
               required
             />
           </div>
@@ -123,7 +123,7 @@ const Contact = () => {
             value={formData.phone}
             onChange={handleChange}
             placeholder="Enter your Phone Number"
-            className="w-full p-3 rounded-lg bg-transparent border border-gray-400 focus:border-purple-500 focus:outline-none"
+            className="w-full p-3 rounded-lg bg-transparent border border-gray-400 focus:border-amber-500 focus:outline-none"
           />
 
           <input
@@ -132,7 +132,7 @@ const Contact = () => {
             value={formData.subject}
             onChange={handleChange}
             placeholder="Enter Subject"
-            className="w-full p-3 rounded-lg bg-transparent border border-gray-400 focus:border-purple-500 focus:outline-none"
+            className="w-full p-3 rounded-lg bg-transparent border border-gray-400 focus:border-amber-500 focus:outline-none"
             required
           />
 
@@ -141,7 +141,7 @@ const Contact = () => {
             whileTap={{ scale: 0.95 }}
             type="submit"
             disabled={loading}
-            className="w-full mt-2 p-3 bg-purple-600 hover:bg-purple-700 transition-all duration-300 rounded-lg font-medium tracking-wide disabled:opacity-60"
+            className="w-full mt-2 p-3 bg-amber-600 hover:bg-amber-700 transition-all duration-300 rounded-lg font-medium tracking-wide disabled:opacity-60"
           >
             {loading ? "Sending..." : "SEND MESSAGE"}
           </motion.button>
@@ -167,21 +167,21 @@ const Contact = () => {
 
         <div className="flex flex-col gap-5 mt-2 text-lg">
           <div className="flex flex-col">
-            <span className="flex items-center gap-2 text-purple-400">
+            <span className="flex items-center gap-2 text-amber-400">
               <IoHome /> OSUN, NIGERIA
             </span>
             <p className="text-gray-400 ml-6">Agunbelewo Area, Osogbo</p>
           </div>
 
           <div className="flex flex-col">
-            <span className="flex items-center gap-2 text-purple-400">
+            <span className="flex items-center gap-2 text-amber-400">
               <FaPhoneAlt /> +234 806 535 1087
             </span>
             <p className="text-gray-400 ml-6">Mon - Fri, 9am - 8pm</p>
           </div>
 
           <div className="flex flex-col">
-            <span className="flex items-center gap-2 text-purple-400">
+            <span className="flex items-center gap-2 text-amber-400">
               <FaEnvelope /> ibrahimademola145@gmail.com
             </span>
             <p className="text-gray-400 ml-6">Send your query anytime</p>

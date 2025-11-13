@@ -1,47 +1,86 @@
 'use client';
+
 import Link from "next/link";
-import { useState } from 'react';
+import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/About" },
+    { name: "Projects", path: "/Projects" },
+    { name: "Contact", path: "/Contact" },
+  ];
 
   return (
-    <nav className="w-full bg-slate-900 h-20 flex fixed z-99 top-0 justify-between items-center  px-4  md:px-10 ">
+    <nav className="fixed top-0 left-0 w-full h-20 z-100 px-6 md:px-12 backdrop-blur-md bg-slate-900/80 border-b border-slate-800 flex justify-between items-center">
       
-      <div className="text-white w-auto text-[2rem] md:text[2rem] font-bold">
-       <h1 ><Link href="/">Highbee</Link></h1> 
-      </div>
+      {/* LOGO */}
+      <h1 className="text-white text-3xl font-extrabold tracking-wide">
+        <Link href="/" className="hover:text-amber-400 transition-all duration-300">
+          Highbee
+        </Link>
+      </h1>
 
-      {/* Desktop Menu */}
-      <ul className="hidden md:flex text-white gap-5">
-  <li className="hover:text-amber-400 transition-colors duration-300"><Link href="/">Home</Link></li>
-  <li className="hover:text-amber-400 transition-colors duration-300"><Link href="/About">About</Link></li>
-  <li className="hover:text-amber-400 transition-colors duration-300"><Link href="/Projects">Projects</Link></li>
-  <li className="hover:text-amber-400 transition-colors duration-300"><Link href="/Contact">Contact</Link></li>
-</ul>
+      {/* DESKTOP MENU */}
+      <ul className="hidden md:flex gap-8 text-white font-medium">
+        {navLinks.map((link) => (
+          <li key={link.path}>
+            <Link
+              href={link.path}
+              className={`relative transition-all duration-300 hover:text-amber-400 ${
+                pathname === link.path ? "text-amber-400" : ""
+              }`}
+            >
+              {link.name}
+              {pathname === link.path && (
+                <motion.span
+                  layoutId="underline"
+                  className="absolute -bottom-1 left-0 w-full h-0.5 bg-amber-400"
+                />
+              )}
+            </Link>
+          </li>
+        ))}
+      </ul>
 
-
-      {/* Mobile Menu Icon */}
-      <div 
+      {/* MOBILE ICON */}
+      <div
         className="md:hidden text-white text-3xl cursor-pointer"
         onClick={() => setMenuOpen(!menuOpen)}
       >
-        {menuOpen ? '✖' : '☰'}
+        {menuOpen ? "✖" : "☰"}
       </div>
 
-     
-      <div
-        className={`absolute top-20 left-0 w-full bg-black flex flex-col items-center text-white gap-5 overflow-hidden transition-all duration-500 ease-in-out ${
-          menuOpen ? 'max-h-96 py-5' : 'max-h-0 py-0'
-        } md:hidden z-50`}
-      >
-        <ul className="flex flex-col items-start gap-5  w-full p-10">
-          <li><Link href="/">Home</Link></li>
-          <li><Link href="/About">About</Link></li>
-          <li><Link href="/Projects">Projects</Link></li>
-          <li><Link href="/Contact">Contact</Link></li>
-        </ul>
-      </div>
+      {/* MOBILE MENU */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-20 left-0 w-full bg-slate-900/95 backdrop-blur-md flex flex-col items-center text-white py-8 md:hidden z-50 shadow-lg"
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                href={link.path}
+                onClick={() => setMenuOpen(false)}
+                className={`text-lg py-2 hover:text-amber-400 transition-all ${
+                  pathname === link.path ? "text-amber-400" : ""
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

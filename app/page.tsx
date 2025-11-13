@@ -33,7 +33,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-linear-to-r from-blue-500 to-purple-600">
+          <h1 className="text-5xl font-extrabold bg-clip-text text-amber-500">
             Highbee
           </h1>
           <p className="text-xl mt-4 opacity-90">Front-End Developer</p>
